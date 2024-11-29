@@ -7,6 +7,9 @@ from ..serializers import VideoTranslationMessageSerializer
 from ..utils.create_faiss_index import create_faiss_index
 from ..utils.s3_downloader import download_s3_file
 from .youtube2Medium import convert_to_article
+from .QuizMe import generate_quiz
+from .summarize import generate_summary
+
 
 def process_text_processing_request(ch, method, properties, body):
     try:
@@ -46,7 +49,7 @@ def process_text_processing_request(ch, method, properties, body):
         index_name_status.status = Status.READY
         index_name_status.save()
 
-        print(convert_to_article(index_name_status.index_name, 3))
+        print(generate_summary(index_name_status.index_name, 3 , 300 , "no additional notes"))
 
     except Exception as e:
         # ch.basic_nack(delivery_tag=method.delivery_tag)

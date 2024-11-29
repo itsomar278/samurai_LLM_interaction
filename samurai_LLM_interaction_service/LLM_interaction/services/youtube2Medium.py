@@ -1,23 +1,5 @@
-from .openai_client import get_embeddings, user_input  # Import the methods from openai_client
-from langchain_community.vectorstores import FAISS
-import os
-
-
-def perform_similarity_search(selected_index, user_question, role, k=7):
-    """
-    Perform the similarity search using FAISS and enriched user question ( role + prompt).
-    """
-    enriched_question = f"{role}\nUser Question: {user_question}"
-
-    index_path = f"C:\\Users\\omar\\PycharmProjects\\samurai_LLM_interaction\\samurai_LLM_interaction_service\\Embeddings\\{selected_index}"
-    embeddings = get_embeddings()
-    new_db = FAISS.load_local(folder_path=index_path,index_name=selected_index, embeddings=embeddings,
-                              allow_dangerous_deserialization=True)
-
-    docs = new_db.similarity_search(enriched_question, k=k)
-    return docs
-
-
+from .openai_client import user_input
+from ..utils.vector_similarity_search import perform_similarity_search
 def convert_to_article(selected_index, user_id):
     """
     Convert the content from the video to a Medium-style article.

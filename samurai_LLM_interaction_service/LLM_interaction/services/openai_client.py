@@ -5,7 +5,6 @@ import openai
 
 load_dotenv()
 
-# Initialize the OpenAI client
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 
@@ -47,7 +46,6 @@ def user_input(user_question, role, docs):
         }
     ]
 
-    # Generate response using GPT-4
     response = gpt_4_generate(messages)
     response_text = response.choices[0].message.content
 
