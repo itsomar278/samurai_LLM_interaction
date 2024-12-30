@@ -160,6 +160,6 @@ MYSQL_PORT=
 
 ## Related Services
 
-- Video Processing: [samurai_video_service](https://github.com/itsomar278/samurai_video_service)
-- Authentication: [samurai_auth_service](https://github.com/itsomar278/samurai_auth_service)
+- Transclation Service: [samurai_video_service](https://github.com/itsomar278/samurai_video_service)
+- Authentication Service: [samurai_auth_service](https://github.com/itsomar278/samurai_auth_service)
 - API Gateway: [samurai_api_gateway](https://github.com/itsomar278/samurai_api_gateway)
